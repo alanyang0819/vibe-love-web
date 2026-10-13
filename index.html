@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="一個讓相隔兩地的戀人分享時間、里程碑與小小驚喜的浪漫儀表板。">
+  <title>相隔兩地，心在一起 — 我們的小角落</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <p class="eyebrow">無論身在何方，我們始終靠近</p>
+    <h1 id="dashboard-title">我們的小小世界</h1>
+    <p id="dashboard-greeting" class="lede">一起收藏我們的時光、里程碑，還有下一個相聚的片刻。</p>
+  </header>
+
+  <main class="dashboard-shell">
+    <section class="glass-card customization-card" aria-labelledby="customization-heading">
+      <div class="customization-heading">
+        <div>
+          <p class="eyebrow">只屬於你們</p>
+          <h2 id="customization-heading">個人化設定</h2>
+        </div>
+        <label class="theme-switch">
+          <input type="checkbox" data-theme-toggle aria-describedby="theme-description">
+          <span class="theme-switch-track" aria-hidden="true"><span></span></span>
+          <span class="theme-switch-label">暖心模式</span>
+        </label>
+      </div>
+      <p id="theme-description" class="meta">選擇你喜歡的色調，設定會留在這台裝置。</p>
+      <form class="customization-form" data-customization-form>
+        <div class="field-group">
+          <label for="nickname-input">怎麼稱呼你？</label>
+          <input id="nickname-input" name="nickname" type="text" maxlength="24" autocomplete="nickname"
+            placeholder="例如：小太陽" data-nickname-input>
+        </div>
+        <div class="field-group">
+          <label for="greeting-input">想說的話</label>
+          <textarea id="greeting-input" name="greeting" rows="2" maxlength="120"
+            placeholder="寫下一句專屬於你們的問候" data-greeting-input></textarea>
+        </div>
+        <button class="primary-button" type="submit">儲存設定</button>
+      </form>
+      <p class="settings-status" data-settings-status role="status" aria-live="polite"></p>
+    </section>
+    <nav class="section-nav" aria-label="快速前往儀表板區塊">
+      <a href="#locations">所在地</a>
+      <a href="#anniversary">紀念日</a>
+      <a href="#surprise">小驚喜</a>
+      <a href="#checkin">心情</a>
+    </nav>
+    <div class="visual-controls" aria-label="視覺控制">
+      <button class="control-button" type="button" data-focus-control aria-pressed="false">聚焦紀念日</button>
+      <button class="control-button" type="button" data-weather-refresh>重新整理天氣</button>
+      <p class="interaction-status" data-feedback-status role="status" aria-live="polite"></p>
+    </div>
+    <section class="dashboard-grid" aria-label="相隔兩地戀人的專屬儀表板">
+      <article class="glass-card clock-card" id="locations" data-clock-card data-card-feedback tabindex="0" role="button" aria-label="查看桃園的時間與天氣">
+        <p class="eyebrow" data-clock-person>家</p>
+        <h2 data-clock-city>桃園</h2>
+        <p class="weather" data-weather>天氣載入中⋯</p>
+        <p class="clock-time" data-clock-time aria-label="當地時間">--:--:--</p>
+        <p class="meta" data-clock-date>正在載入日期⋯</p>
+        <p class="timezone" data-clock-zone>正在載入時區⋯</p>
+        <p class="clock-state" data-clock-state>載入中⋯</p>
+      </article>
+
+      <article class="glass-card clock-card" data-clock-card data-card-feedback tabindex="0" role="button" aria-label="查看高雄的時間與天氣">
+        <p class="eyebrow" data-clock-person>我的愛</p>
+        <h2 data-clock-city>高雄</h2>
+        <p class="weather" data-weather>天氣載入中⋯</p>
+        <p class="clock-time" data-clock-time aria-label="當地時間">--:--:--</p>
+        <p class="meta" data-clock-date>正在載入日期⋯</p>
+        <p class="timezone" data-clock-zone>正在載入時區⋯</p>
+        <p class="clock-state" data-clock-state>載入中⋯</p>
+      </article>
+
+      <section class="glass-card anniversary-card wide-card" id="anniversary" data-anniversary-state="invalid" data-card-feedback tabindex="0" role="button" aria-label="查看我們相伴的時光" aria-labelledby="anniversary-heading">
+        <p class="eyebrow">我們的下一章</p>
+        <h2 id="anniversary-heading" data-anniversary-label>暫時無法取得紀念日資訊</h2>
+        <p class="meta" data-anniversary-date>正在載入里程碑⋯</p>
+        <div class="duration" aria-label="我們相伴的時光">
+          <div><strong data-duration="days">--</strong><span>天</span></div>
+          <div><strong data-duration="hours">--</strong><span>小時</span></div>
+          <div><strong data-duration="minutes">--</strong><span>分鐘</span></div>
+          <div><strong data-duration="seconds">--</strong><span>秒</span></div>
+        </div>
+        <p class="error-message" data-anniversary-error role="status"></p>
+      </section>
+
+      <section class="glass-card message-card wide-card" id="surprise" tabindex="-1" aria-labelledby="surprise-heading">
+        <p class="eyebrow">一個小小的驚喜</p>
+        <h2 id="surprise-heading">想要一個擁抱的時候</h2>
+        <p class="message" id="surprise-message" data-surprise-message aria-live="polite">按下按鈕，收下一點點愛。</p>
+        <button class="primary-button" type="button" data-surprise-button aria-controls="surprise-message">
+          傳送一點愛
+        </button>
+      </section>
+
+      <section class="glass-card romantic-panel wide-card" id="checkin" tabindex="-1" aria-labelledby="romantic-panel-heading">
+        <div class="romantic-panel-heading">
+          <div>
+            <p class="eyebrow">今天也想靠近你</p>
+            <h2 id="romantic-panel-heading">留一盞心情小燈</h2>
+          </div>
+          <span class="saved-indicator" data-checkin-saved aria-live="polite"></span>
+        </div>
+        <fieldset class="mood-picker">
+          <legend>今天的心情</legend>
+          <div class="mood-options" data-mood-options>
+            <button class="mood-option" type="button" data-mood="sunny" aria-pressed="false">
+              <span class="mood-emoji" aria-hidden="true">☀️</span><span>晴朗</span>
+            </button>
+            <button class="mood-option" type="button" data-mood="soft" aria-pressed="false">
+              <span class="mood-emoji" aria-hidden="true">🌷</span><span>溫柔</span>
+            </button>
+            <button class="mood-option" type="button" data-mood="tired" aria-pressed="false">
+              <span class="mood-emoji" aria-hidden="true">🌙</span><span>有點累</span>
+            </button>
+            <button class="mood-option" type="button" data-mood="cloudy" aria-pressed="false">
+              <span class="mood-emoji" aria-hidden="true">☁️</span><span>需要抱抱</span>
+            </button>
+            <button class="mood-option" type="button" data-mood="excited" aria-pressed="false">
+              <span class="mood-emoji" aria-hidden="true">✨</span><span>充滿期待</span>
+            </button>
+          </div>
+        </fieldset>
+        <label class="note-label" for="memory-note">留一句給未來的我們</label>
+        <textarea id="memory-note" class="memory-note" data-memory-note rows="3" maxlength="240"
+          placeholder="記下今天想分享的小事、想念，或下次見面要完成的事⋯"></textarea>
+        <div class="note-footer">
+          <span class="character-count" data-character-count>0 / 240</span>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">用心寫成，獻給每次相見之間的時光。</footer>
+  <noscript><p class="noscript">這個儀表板需要啟用 JavaScript，才能顯示即時時鐘與計時器。</p></noscript>
+</body>
+</html>
